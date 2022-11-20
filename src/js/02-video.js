@@ -5,8 +5,9 @@ const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 const lsCurrTime = localStorage.getItem('videoplayer-current-time');
 
-
-player.setCurrentTime(lsCurrTime);
+if (lsCurrTime !== null) {
+    player.setCurrentTime(lsCurrTime);
+}
 player.on('timeupdate', throttle(saveTime, 1000));
 
 function saveTime(time) {
